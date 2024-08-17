@@ -81,6 +81,24 @@ def bubble_sort_improved():
     print("Sorted array:", my_array)
 
 
+def selection_sort():
+    my_array = [64, 34, 25, 5, 22, 11, 90, 12]
+
+    print("Array:", my_array)
+
+    n = len(my_array)
+    # print("n:", n)
+    for i in range(n - 1):
+        # print("i:", i)
+        min_index = i
+        for j in range(i + 1, n):
+            if my_array[j] < my_array[min_index]:
+                min_index = j
+        min_value = my_array.pop(min_index)
+        my_array.insert(i, min_value)
+    print("Sorted array:", my_array)
+
+
 # Python
 
 
@@ -89,4 +107,5 @@ def bubble_sort_improved():
 # fibonacci_using_recursion()
 # print("19th fibonacci =", nthFibonacci(19))
 # bubble_sort()
-bubble_sort_improved()
+# bubble_sort_improved()
+selection_sort()

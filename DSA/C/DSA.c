@@ -2,12 +2,28 @@
 #include <stdbool.h>
 
 void lowest_value();
+void printArray(int my_array[], int n);
 void fibonacci();
 void fibonacci_using_recursion();
 void fib_recur(int, int, int);
 int nth_fibonacci(int n);
 void bubble_sort();
 void bubble_sort_improved();
+void selection_sort();
+
+/*
+
+void almashtirish(int massiv[], int uzunlik)
+{
+    int *birinchi = &massiv[0];
+    int *oxirgi = &massiv[uzunlik - 1];
+
+    *birinchi = *birinchi + *oxirgi;
+    *oxirgi = *birinchi - *oxirgi;
+    *birinchi = *birinchi - *oxirgi;
+}
+
+*/
 
 int main()
 {
@@ -16,7 +32,16 @@ int main()
     // fibonacci_using_recursion();
     // printf("19th fibonacci = %d\n", nth_fibonacci(19));
     // bubble_sort();
-    bubble_sort_improved();
+    // bubble_sort_improved();
+    selection_sort();
+
+    /*
+    int A[5] = {1, 2, 3, 4, 5};
+    int uzunlik = sizeof(A) / sizeof(A[0]);
+    printArray(A, uzunlik);
+    almashtirish(A, uzunlik);
+    printArray(A, uzunlik);
+    */
 
     return 0;
 }
@@ -161,5 +186,35 @@ void bubble_sort_improved()
     }
 
     printf("Sorted array: ");
+    printArray(my_array, n);
+}
+
+void selection_sort()
+{
+    int my_array[] = {64, 34, 25, 5, 22, 11, 90, 12};
+    int n = sizeof(my_array) / sizeof(my_array[0]);
+
+    printf("Array: ");
+    printArray(my_array, n);
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_index = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (my_array[j] < my_array[min_index])
+            {
+                min_index = j;
+            }
+        }
+        int min_value = my_array[min_index];
+        for (int k = min_index; k > i; k--)
+        {
+            my_array[k] = my_array[k - 1];
+        }
+        my_array[i] = min_value;
+    }
+
+    printf("Sorted Array: ");
     printArray(my_array, n);
 }
