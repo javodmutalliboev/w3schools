@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void lowest_value();
 void fibonacci();
@@ -6,6 +7,7 @@ void fibonacci_using_recursion();
 void fib_recur(int, int, int);
 int nth_fibonacci(int n);
 void bubble_sort();
+void bubble_sort_improved();
 
 int main()
 {
@@ -13,7 +15,8 @@ int main()
     // fibonacci();
     // fibonacci_using_recursion();
     // printf("19th fibonacci = %d\n", nth_fibonacci(19));
-    bubble_sort();
+    // bubble_sort();
+    bubble_sort_improved();
 
     return 0;
 }
@@ -123,6 +126,37 @@ void bubble_sort()
                 my_array[j] = my_array[j + 1];
                 my_array[j + 1] = temp;
             }
+        }
+    }
+
+    printf("Sorted array: ");
+    printArray(my_array, n);
+}
+
+void bubble_sort_improved()
+{
+    int my_array[] = {7, 3, 9, 12, 11};
+    int n = sizeof(my_array) / sizeof(my_array[0]);
+
+    printf("Array: ");
+    printArray(my_array, n);
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        bool swapped = false;
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (my_array[j] > my_array[j + 1])
+            {
+                int temp = my_array[j];
+                my_array[j] = my_array[j + 1];
+                my_array[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped)
+        {
+            break;
         }
     }
 

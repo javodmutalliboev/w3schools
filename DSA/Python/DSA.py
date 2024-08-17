@@ -63,8 +63,30 @@ def bubble_sort():
     print("Sorted array:", my_array)
 
 
+def bubble_sort_improved():
+    my_array = [7, 3, 9, 12, 11]
+
+    print("Array:", my_array)
+
+    n = len(my_array)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - i - 1):
+            if my_array[j] > my_array[j + 1]:
+                my_array[j], my_array[j + 1] = my_array[j + 1], my_array[j]
+                swapped = True
+        if not swapped:
+            break
+
+    print("Sorted array:", my_array)
+
+
+# Python
+
+
 # lowest_value()
 # fibonacci()
 # fibonacci_using_recursion()
 # print("19th fibonacci =", nthFibonacci(19))
-bubble_sort()
+# bubble_sort()
+bubble_sort_improved()
