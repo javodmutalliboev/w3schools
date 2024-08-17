@@ -42,6 +42,29 @@ def fibonacci_using_recursion():
     recursion(1, 0)
 
 
+def nthFibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return nthFibonacci(n - 1) + nthFibonacci(n - 2)
+
+
+def bubble_sort():
+    my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+    n = len(my_array)
+
+    print("Array:", my_array)
+
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if my_array[j] > my_array[j + 1]:
+                my_array[j], my_array[j + 1] = my_array[j + 1], my_array[j]
+
+    print("Sorted array:", my_array)
+
+
 # lowest_value()
 # fibonacci()
-fibonacci_using_recursion()
+# fibonacci_using_recursion()
+# print("19th fibonacci =", nthFibonacci(19))
+bubble_sort()

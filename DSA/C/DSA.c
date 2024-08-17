@@ -4,12 +4,16 @@ void lowest_value();
 void fibonacci();
 void fibonacci_using_recursion();
 void fib_recur(int, int, int);
+int nth_fibonacci(int n);
+void bubble_sort();
 
 int main()
 {
     // lowest_value();
     // fibonacci();
-    fibonacci_using_recursion();
+    // fibonacci_using_recursion();
+    // printf("19th fibonacci = %d\n", nth_fibonacci(19));
+    bubble_sort();
 
     return 0;
 }
@@ -72,4 +76,56 @@ void fib_recur(int count, int prev1, int prev2)
     {
         return;
     }
+}
+
+int nth_fibonacci(int n)
+{
+    if (n <= 1)
+        return n;
+    else
+        return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
+}
+
+void printArray(int my_array[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (i == 0)
+        {
+            printf("{ %d ", my_array[i]);
+        }
+        else if (i == n - 1)
+        {
+            printf("%d }\n", my_array[i]);
+        }
+        else
+        {
+            printf("%d ", my_array[i]);
+        }
+    }
+}
+
+void bubble_sort()
+{
+    int my_array[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    int n = sizeof(my_array) / sizeof(int);
+
+    printf("Array: ");
+    printArray(my_array, n);
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (my_array[j] > my_array[j + 1])
+            {
+                int temp = my_array[j];
+                my_array[j] = my_array[j + 1];
+                my_array[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array: ");
+    printArray(my_array, n);
 }
