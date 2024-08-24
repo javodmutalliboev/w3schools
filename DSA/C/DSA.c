@@ -10,6 +10,7 @@ int nth_fibonacci(int n);
 void bubble_sort();
 void bubble_sort_improved();
 void selection_sort();
+void selection_sort_improved(int n, int my_array[]);
 
 /*
 
@@ -33,7 +34,10 @@ int main()
     // printf("19th fibonacci = %d\n", nth_fibonacci(19));
     // bubble_sort();
     // bubble_sort_improved();
-    selection_sort();
+    // selection_sort();
+    int my_array[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    int n = sizeof(my_array) / sizeof(my_array[0]);
+    selection_sort_improved(n, my_array);
 
     /*
     int A[5] = {1, 2, 3, 4, 5};
@@ -216,5 +220,29 @@ void selection_sort()
     }
 
     printf("Sorted Array: ");
+    printArray(my_array, n);
+}
+
+void selection_sort_improved(int n, int my_array[])
+{
+    printf("Array: ");
+    printArray(my_array, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        int min_index = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (my_array[j] < my_array[min_index])
+            {
+                min_index = j;
+            }
+        }
+        int temp = my_array[i];
+        my_array[i] = my_array[min_index];
+        my_array[min_index] = temp;
+    }
+
+    printf("Sorted array: ");
     printArray(my_array, n);
 }

@@ -99,6 +99,20 @@ def selection_sort():
     print("Sorted array:", my_array)
 
 
+def selection_sort_improved(my_array: list[int]):
+    print("Array:", my_array)
+
+    n = len(my_array)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if my_array[j] < my_array[min_index]:
+                min_index = j
+        my_array[i], my_array[min_index] = my_array[min_index], my_array[i]
+
+    print("Sorted array:", my_array)
+
+
 # Python
 
 
@@ -108,4 +122,5 @@ def selection_sort():
 # print("19th fibonacci =", nthFibonacci(19))
 # bubble_sort()
 # bubble_sort_improved()
-selection_sort()
+# selection_sort()
+selection_sort_improved([64, 34, 25, 12, 22, 11, 90, 5])

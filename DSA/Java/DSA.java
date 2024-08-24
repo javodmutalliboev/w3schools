@@ -9,7 +9,9 @@ public class DSA {
         // System.out.printf("19th fibonacci = " + dsa.nth_fibonacci(19) + "\n");
         // dsa.bubble_sort();
         // dsa.bubble_sort_improved();
-        dsa.selection_sort();
+        // dsa.selection_sort();
+        int[] my_array = { 64, 34, 25, 12, 22, 11, 90, 5 };
+        dsa.selection_sort_improved(my_array);
     }
 
     void lowest_value() {
@@ -148,6 +150,28 @@ public class DSA {
                 my_array[k] = my_array[k - 1];
             }
             my_array[i] = min_value;
+        }
+
+        System.out.print("Sorted Array: ");
+        print_array(my_array, n);
+    }
+
+    void selection_sort_improved(int[] my_array) {
+        int n = my_array.length;
+
+        System.out.print("Array: ");
+        print_array(my_array, n);
+
+        for (int i = 0; i < n; i++) {
+            int min_index = i;
+            for (int j = i + 1; j < n; j++) {
+                if (my_array[j] < my_array[min_index]) {
+                    min_index = j;
+                }
+            }
+            int temp = my_array[i];
+            my_array[i] = my_array[min_index];
+            my_array[min_index] = temp;
         }
 
         System.out.print("Sorted Array: ");
