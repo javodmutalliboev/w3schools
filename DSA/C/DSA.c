@@ -12,6 +12,7 @@ void bubble_sort_improved();
 void selection_sort();
 void selection_sort_improved(int n, int my_array[]);
 void insertion_sort();
+void insertion_sort_improved();
 
 /*
 
@@ -36,9 +37,11 @@ int main()
     // bubble_sort();
     // bubble_sort_improved();
     // selection_sort();
-    int my_array[] = {64, 34, 25, 12, 22, 11, 90, 5};
-    int n = sizeof(my_array) / sizeof(my_array[0]);
-    selection_sort_improved(n, my_array);
+    // int my_array[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    // int n = sizeof(my_array) / sizeof(my_array[0]);
+    // selection_sort_improved(n, my_array);
+    // insertion_sort();
+    insertion_sort_improved();
 
     /*
     int A[5] = {1, 2, 3, 4, 5};
@@ -270,6 +273,33 @@ void insertion_sort()
             j--;
         }
         myArray[insert_index] = current_value;
+    }
+
+    printf("Sorted array: ");
+    printArray(myArray, n);
+}
+
+void insertion_sort_improved()
+{
+    int myArray[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    int n = sizeof(myArray) / sizeof(myArray[0]);
+
+    printf("Array: ");
+    printArray(myArray, n);
+
+    for (int i = 1; i < n; i++)
+    {
+        int insertIndex = i;
+        int currentValue = myArray[i];
+        int j = i - 1;
+
+        while (j >= 0 && myArray[j] > currentValue)
+        {
+            myArray[j + 1] = myArray[j];
+            insertIndex = j;
+            j--;
+        }
+        myArray[insertIndex] = currentValue;
     }
 
     printf("Sorted array: ");

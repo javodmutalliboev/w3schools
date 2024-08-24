@@ -12,7 +12,8 @@ public class DSA {
         // dsa.selection_sort();
         // int[] my_array = { 64, 34, 25, 12, 22, 11, 90, 5 };
         // dsa.selection_sort_improved(my_array);
-        dsa.insertion_sort();
+        // dsa.insertion_sort();
+        dsa.insertion_sort_improved();
     }
 
     void lowest_value() {
@@ -184,7 +185,7 @@ public class DSA {
 
         int n = myArray.length;
 
-        System.out.print("Sorted Array: ");
+        System.out.print("Array: ");
         print_array(myArray, n);
 
         for (int i = 1; i < n; i++) {
@@ -198,6 +199,31 @@ public class DSA {
                 j--;
             }
             myArray[insert_index] = current_value;
+        }
+
+        System.out.print("Sorted Array: ");
+        print_array(myArray, n);
+    }
+
+    void insertion_sort_improved() {
+        int[] myArray = { 64, 34, 25, 12, 22, 11, 90, 5 };
+
+        int n = myArray.length;
+
+        System.out.print("Array: ");
+        print_array(myArray, n);
+
+        for (int i = 1; i < n; i++) {
+            int insertIndex = i;
+            int currentValue = myArray[i];
+            int j = i - 1;
+
+            while (j >= 0 && myArray[j] > currentValue) {
+                myArray[j + 1] = myArray[j];
+                insertIndex = j;
+                j--;
+            }
+            myArray[insertIndex] = currentValue;
         }
 
         System.out.print("Sorted Array: ");
