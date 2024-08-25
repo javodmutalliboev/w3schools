@@ -149,6 +149,29 @@ def insertion_sort_improved():
     print("Sorted array:", my_array)
 
 
+def partition(array, low, high):
+    pivot = array[high]
+    i = low - 1
+
+    for j in range(low, high):
+        if array[j] <= pivot:
+            i += 1
+            array[i], array[j] = array[j], array[i]
+
+    array[i + 1], array[high] = array[high], array[i + 1]
+    return i + 1
+
+
+def quicksort(array, low=0, high=None):
+    if high is None:
+        high = len(array) - 1
+
+    if low < high:
+        pivot_index = partition(array, low, high)
+        quicksort(array, low, pivot_index - 1)
+        quicksort(array, pivot_index + 1, high)
+
+
 # Python
 
 
@@ -161,4 +184,8 @@ def insertion_sort_improved():
 # selection_sort()
 # selection_sort_improved([64, 34, 25, 12, 22, 11, 90, 5])
 # insertion_sort([64, 34, 25, 12, 22, 11, 90, 5])
-insertion_sort_improved()
+# insertion_sort_improved()
+my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+print("Array", my_array)
+quicksort(my_array)
+print("Sorted array:", my_array)
