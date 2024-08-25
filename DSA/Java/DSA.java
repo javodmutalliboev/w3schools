@@ -14,13 +14,43 @@ public class DSA {
         // dsa.selection_sort_improved(my_array);
         // dsa.insertion_sort();
         // dsa.insertion_sort_improved();
-        int[] myArray = { 64, 34, 25, 12, 22, 11, 90, 5 };
+        // int[] myArray = { 64, 34, 25, 12, 22, 11, 90, 5 };
+        // System.out.print("Array: ");
+        // int n = myArray.length;
+        // dsa.print_array(myArray, n);
+        // quicksort(myArray, 0, myArray.length - 1);
+        // System.out.print("Sorted array: ");
+        // dsa.print_array(myArray, n);
+        int[] arr = { 4, 2, 2, 6, 3, 3, 1, 6, 5, 2, 3 };
         System.out.print("Array: ");
-        int n = myArray.length;
-        dsa.print_array(myArray, n);
-        quicksort(myArray, 0, myArray.length - 1);
+        int n = arr.length;
+        dsa.print_array(arr, n);
+        dsa.countingSort(arr);
         System.out.print("Sorted array: ");
-        dsa.print_array(myArray, n);
+        dsa.print_array(arr, n);
+    }
+
+    void countingSort(int[] arr) {
+        int max_val = arr[0];
+        for (int num : arr) {
+            if (num > max_val) {
+                max_val = num;
+            }
+        }
+
+        int[] count = new int[max_val + 1];
+
+        for (int num : arr) {
+            count[num]++;
+        }
+
+        int index = 0;
+        for (int i = 0; i <= max_val; i++) {
+            while (count[i] > 0) {
+                arr[index++] = i;
+                count[i]--;
+            }
+        }
     }
 
     void lowest_value() {

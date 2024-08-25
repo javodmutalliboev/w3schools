@@ -172,6 +172,21 @@ def quicksort(array, low=0, high=None):
         quicksort(array, pivot_index + 1, high)
 
 
+def countingSort(arr: list[int]) -> list[int]:
+    max_val = max(arr)
+    count = [0] * (max_val + 1)
+    while len(arr) > 0:
+        num = arr.pop(0)
+        count[num] += 1
+
+    for i in range(len(count)):
+        while count[i] > 0:
+            arr.append(i)
+            count[i] -= 1
+
+    return arr
+
+
 # Python
 
 
@@ -185,7 +200,11 @@ def quicksort(array, low=0, high=None):
 # selection_sort_improved([64, 34, 25, 12, 22, 11, 90, 5])
 # insertion_sort([64, 34, 25, 12, 22, 11, 90, 5])
 # insertion_sort_improved()
-my_array = [64, 34, 25, 12, 22, 11, 90, 5]
-print("Array", my_array)
-quicksort(my_array)
-print("Sorted array:", my_array)
+# my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+# print("Array", my_array)
+# quicksort(my_array)
+# print("Sorted array:", my_array)
+unsortedArr = [4, 2, 2, 6, 3, 3, 1, 6, 5, 2, 3]
+print("Unsorted array:", unsortedArr)
+sortedArr = countingSort(unsortedArr)
+print("Sorted array:", sortedArr)
